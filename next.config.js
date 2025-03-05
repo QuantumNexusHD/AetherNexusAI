@@ -3,7 +3,6 @@
  */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   images: {
     domains: ['localhost'],
     remotePatterns: [
@@ -13,9 +12,7 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    serverComponentsExternalPackages: ['mongoose'],
-  },
+  experimental: { },
 };
 
 export default nextConfig;

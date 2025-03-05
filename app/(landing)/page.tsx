@@ -1,6 +1,7 @@
 "use client"; // Mark as Client Component
 
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 
 // Cube component for rotating 3D cubes
@@ -34,7 +35,7 @@ const Cube = ({ size, top, left, speed }: { size: number; top: string; left: str
 const Ship = ({ top, speed, direction }: { top: string; speed: number; direction: string }) => {
   return (
     <div className={`ship ${direction}`} style={{ top, animationDuration: `${speed}s` }}>
-        {<img src="/ship.png" alt="Ship" style={{ width: '100%', height: '100%' }} /> }
+        {<Image src="/ship.png" alt="Ship" style={{ width: '100%', height: '100%' }} /> }
     </div>
   );
 };

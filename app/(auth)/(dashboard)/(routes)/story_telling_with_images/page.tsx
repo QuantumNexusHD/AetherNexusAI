@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
+import Image from "next/image";
+
 
 // Define the response type from the API
 interface ManifestResponse {
@@ -36,8 +38,12 @@ export default function StoryTellingPage() {
 
       const data: ManifestResponse = await res.json();
       setResult(data);
-    } catch (err: any) {
-      setError(err.message || "Something went wrong");
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message);
+      } else {
+        setError("Something went wrong");
+      }
     } finally {
       setLoading(false);
     }
@@ -140,7 +146,7 @@ export default function StoryTellingPage() {
                 ))}
               </motion.div>
               <p className="text-cyan-200 mb-4 font-orbitron neon-text">{result.story}</p>
-              <img src={result.imageUrl} alt="Your Future" className="w-full rounded-lg" />
+              <Image src={result.imageUrl} alt="Your Future" className="w-full rounded-lg" />
             </motion.div>
           )}
         </div>

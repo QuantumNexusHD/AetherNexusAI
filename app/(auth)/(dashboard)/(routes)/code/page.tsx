@@ -61,7 +61,7 @@ const CodePage = () => {
 
       setMessages([...newMessages, assistantMessage]);
       form.reset();
-    } catch (error: any) {
+    } catch (error) {
       console.error("Error generating response:", error);
     } finally {
       setIsGenerating(false);
@@ -137,12 +137,12 @@ const CodePage = () => {
                   <div className="text-sm whitespace-pre-wrap">
                     <ReactMarkdown
                       components={{
-                        pre: ({ node, ...props }) => (
+                        pre: ({ ...props }) => (
                           <div className="overflow-auto w-full my-2 bg-black/20 p-2 rounded-lg text-white">
                             <pre {...props} />
                           </div>
                         ),
-                        code: ({ node, ...props }) => (
+                        code: ({ ...props }) => (
                           <code className="bg-black/20 rounded-lg p-1 text-white" {...props} />
                         ),
                       }}

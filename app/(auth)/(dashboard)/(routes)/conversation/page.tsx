@@ -55,7 +55,7 @@ const ConversationPage = () => {
 
       setMessages([...newMessages, assistantMessage]);
       form.reset();
-    } catch (error: any) {
+    } catch (error) {
       console.error("Error generating response:", error);
     } finally {
       setIsGenerating(false);
@@ -76,7 +76,7 @@ const ConversationPage = () => {
               Conversation
             </h2>
             <p className="text-sm text-gray-300 neon-text">
-              Powered by AetherNexusAI's API calls to advanced language models.
+              Powered by AetherNexusAI&apos;s API calls to advanced language models.
             </p>
           </div>
         </div>

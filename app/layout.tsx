@@ -7,9 +7,6 @@ import { ClerkProvider } from '@clerk/nextjs'
 
 dotenv.config();
 
-const publishableKey = process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY;
-
-
 const inter = Inter({ subsets: ['latin']});
 
 export const metadata: Metadata = {
