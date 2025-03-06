@@ -77,7 +77,7 @@ async function generateImage(story: string, resolution: string): Promise<string>
   } catch (error) {
     clearTimeout(timeout);
     console.error("Error generating image with DALL·E:", error);
-    if (error.name === "AbortError") {
+    if (error instanceof Error && error.name === "AbortError") {
       console.warn("Image generation timed out after 30s");
       return `https://via.placeholder.com/${resolution.replace("x", "/")}?text=Image+Timed+Out`;
     }
