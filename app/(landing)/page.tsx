@@ -35,7 +35,7 @@ const Cube = ({ size, top, left, speed }: { size: number; top: string; left: str
 const Ship = ({ top, speed, direction }: { top: string; speed: number; direction: string }) => {
   return (
     <div className={`ship ${direction}`} style={{ top, animationDuration: `${speed}s` }}>
-        {<Image src="/ship.png" alt="Ship" style={{ width: '100%', height: '100%' }} /> }
+      {<Image src="/ship.png" alt="Ship" style={{ width: '100%', height: '100%' }} />}
     </div>
   );
 };
@@ -52,13 +52,20 @@ const LandingPage = () => {
 
       {/* Foreground content */}
       <div className="content">
-        <h1>Landing Page (Unprotected)</h1>
+        <h1 className="typing-text">Aether Nexus AI Home Page</h1>
         <div className="button-group">
-          <Link href="/sign-in">
-            <Button className="neon-button">Login</Button>
+          {/* New buttons for the specified routes */}
+          <Link href="/dashboard">
+            <Button className="neon-button">Dashboard</Button>
           </Link>
-          <Link href="/sign-up">
-            <Button className="neon-button">Register</Button>
+          <Link href="/conversation">
+            <Button className="neon-button">Conversation</Button>
+          </Link>
+          <Link href="/code">
+            <Button className="neon-button">Code</Button>
+          </Link>
+          <Link href="/story_telling_with_images">
+            <Button className="neon-button">Story Telling with Images</Button>
           </Link>
         </div>
       </div>
@@ -116,17 +123,32 @@ const LandingPage = () => {
           z-index: 1;
         }
 
-        h1 {
+        .typing-text {
           color: #ffffff;
           text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; /* Neon glow */
           font-size: 3rem;
-          font-family: 'Arial', sans-serif; /* Adjust font if needed */
+          font-family: 'Arial', sans-serif;
+          overflow: hidden; /* Ensures text stays within bounds */
+          white-space: nowrap; /* Prevents text from wrapping */
+          border-right: 4px solid #00ffff; /* Cursor effect */
+          animation: typing 3.5s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+          from { width: 0; }
+          to { width: 100%; }
+        }
+
+        @keyframes blink-caret {
+          from, to { border-color: transparent; }
+          50% { border-color: #00ffff; }
         }
 
         .button-group {
           display: flex;
           gap: 20px;
           justify-content: center;
+          flex-wrap: wrap; /* Allow buttons to wrap if the screen is too small */
         }
 
         .neon-button {
