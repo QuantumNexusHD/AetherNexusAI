@@ -9,8 +9,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-html,
-body,
+html, body {
+  height: 100%;
+  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden; /* Optional: keep horizontal hidden */
+}
+
 :root {
   height: 100%;
   --background: oklch(1 0 0);

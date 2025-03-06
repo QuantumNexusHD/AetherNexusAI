@@ -3,10 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import Head from "next/head";
-import Image from "next/image";
 
-
-// Define the response type from the API
 interface ManifestResponse {
   story: string;
   imageUrl: string;
@@ -39,11 +36,7 @@ export default function StoryTellingPage() {
       const data: ManifestResponse = await res.json();
       setResult(data);
     } catch (error) {
-      if (error instanceof Error) {
-        setError(error.message);
-      } else {
-        setError("Something went wrong");
-      }
+      setError(error instanceof Error ? error.message : "Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -52,34 +45,27 @@ export default function StoryTellingPage() {
   return (
     <>
       <Head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap"
-          rel="stylesheet"
-        />
+        <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
       </Head>
-      <div className="min-h-screen bg-cyberpunk flex items-center justify-center p-4 overflow-x-hidden">
+      <div className="min-h-screen bg-cyberpunk flex items-start justify-center p-4 overflow-x-hidden overflow-y: auto">
         <div className="max-w-2xl w-full space-y-8 relative">
-          {/* Pulsing Orb Animation */}
           <motion.div
             className="absolute top-0 left-1/2 w-16 h-16 bg-indigo-400 rounded-full opacity-30 blur-xl"
             animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />
-          {/* Digital Wave Animation */}
           <motion.div
             className="absolute bottom-0 w-full h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent"
             initial={{ x: "-100%" }}
             animate={{ x: "100%" }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
           />
-          {/* Rotating Holographic Ring */}
           <motion.div
             className="absolute top-1/4 right-0 w-24 h-24 border-2 border-dashed border-purple-500 rounded-full opacity-50"
             animate={{ rotate: 360 }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
           />
 
-          {/* Input Section */}
           <h1 className="text-4xl font-bold text-cyan-400 text-center font-orbitron relative z-10 neon-title">
             Manifest Your Future
           </h1>
@@ -99,9 +85,9 @@ export default function StoryTellingPage() {
               onChange={(e) => setResolution(e.target.value)}
               className="w-full p-3 rounded-lg bg-gray-800/80 border border-indigo-500/50 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 font-orbitron backdrop-blur-sm"
             >
-              <option value="512x512">512x512</option>
               <option value="1024x1024">1024x1024</option>
               <option value="1792x1024">1792x1024</option>
+              <option value="1024x1792">1024x1792</option>
             </select>
             <button
               onClick={handleManifest}
@@ -112,7 +98,6 @@ export default function StoryTellingPage() {
             </button>
           </div>
 
-          {/* Output Section */}
           {loading && (
             <p className="text-center text-cyan-200 font-orbitron relative z-10 neon-text">
               Manifesting your future...
@@ -130,7 +115,7 @@ export default function StoryTellingPage() {
               className="relative p-6 rounded-lg bg-gray-800/80 border border-indigo-500/50 shadow-lg glow-box z-10 backdrop-blur-sm"
             >
               <motion.div
-                className="absolute inset-0 pointer-events-none overflow-hidden"
+                className="absolute inset-0 pointer-events-none overflow-hidden overflow-y-auto"
                 initial={{ x: "-100%" }}
                 animate={{ x: "100%" }}
                 transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
@@ -146,12 +131,11 @@ export default function StoryTellingPage() {
                 ))}
               </motion.div>
               <p className="text-cyan-200 mb-4 font-orbitron neon-text">{result.story}</p>
-              <Image src={result.imageUrl} alt="Your Future" className="w-full rounded-lg" />
+              <img src={result.imageUrl} alt="Your Future" className="w-full rounded-lg" />
             </motion.div>
           )}
         </div>
 
-        {/* Inline Styles */}
         <style jsx>{`
           .font-orbitron {
             font-family: "Orbitron", sans-serif;
@@ -182,7 +166,7 @@ export default function StoryTellingPage() {
           }
           .neon-text {
             text-shadow: 0 0 3px rgba(0, 255, 255, 0.5), 0 0 8px rgba(0, 255, 255, 0.3);
-            animation: glow 2s infinite alternate;
+            animation: glow-text 2s infinite alternate;
           }
           @keyframes glow {
             from { box-shadow: 0 0 10px rgba(79, 70, 229, 0.5); }
@@ -201,7 +185,7 @@ export default function StoryTellingPage() {
               text-shadow: 0 0 3px rgba(0, 255, 255, 0.5), 0 0 10px rgba(0, 255, 255, 0.3);
             }
           }
-          @keyframes glow {
+          @keyframes glow-text {
             from { text-shadow: 0 0 3px rgba(0, 255, 255, 0.5), 0 0 8px rgba(0, 255, 255, 0.3); }
             to { text-shadow: 0 0 5px rgba(0, 255, 255, 0.7), 0 0 12px rgba(0, 255, 255, 0.5); }
           }

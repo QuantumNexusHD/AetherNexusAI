@@ -6,7 +6,7 @@ import Sidebar from "@/components/sidebar";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="h-full relative overflow-hidden bg-cyberpunk">
+    <div className="h-full relative bg-cyberpunk">
       {/* Animated Cyberpunk City Background */}
       <div className="absolute inset-0 z-0">
         <motion.div

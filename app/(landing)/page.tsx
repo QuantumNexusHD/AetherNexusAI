@@ -35,7 +35,7 @@ const Cube = ({ size, top, left, speed }: { size: number; top: string; left: str
 const Ship = ({ top, speed, direction }: { top: string; speed: number; direction: string }) => {
   return (
     <div className={`ship ${direction}`} style={{ top, animationDuration: `${speed}s` }}>
-      {<Image src="/ship.png" alt="Ship" style={{ width: '100%', height: '100%' }} />}
+      {<Image src="/ship.png" alt="Ship" fill style={{ objectFit: 'contain' }} />}
     </div>
   );
 };
