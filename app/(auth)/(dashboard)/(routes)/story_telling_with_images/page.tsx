@@ -85,7 +85,7 @@ export default function StoryTellingPage() {
               onChange={(e) => setResolution(e.target.value)}
               className="w-full p-3 rounded-lg bg-gray-800/80 border border-indigo-500/50 text-white focus:outline-none focus:ring-2 focus:ring-indigo-400 font-orbitron backdrop-blur-sm"
             >
-              <option value="1792x1024">1792x1024</option>
+              <option value="1792x1024" selected>1792x1024</option>
               <option value="1024x1792">1024x1792</option>
             </select>
             <button
