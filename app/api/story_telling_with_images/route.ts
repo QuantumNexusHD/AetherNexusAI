@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 
-const VALID_RESOLUTIONS = ["1024x1024", "1792x1024", "1024x1792"];
+const VALID_RESOLUTIONS = ["1792x1024", "1024x1792"];
 const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY;
 const DEEPSEEK_BASE_URL = "https://api.deepseek.com";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
