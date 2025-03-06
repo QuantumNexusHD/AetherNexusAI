@@ -11,7 +11,7 @@ interface ManifestResponse {
 
 export default function StoryTellingPage() {
   const [prompt, setPrompt] = useState("");
-  const [resolution, setResolution] = useState("512x512");
+  const [resolution, setResolution] = useState("1792x1024");
   const [result, setResult] = useState<ManifestResponse | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
